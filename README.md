@@ -6,8 +6,7 @@ An easy way to build labels in ppla (printer programming language A)
 Install the module with: `npm install ppla-builder`
 
 ```javascript
-var ppla_builder = require('ppla-builder');
-ppla_builder.awesome(); // "awesome"
+var pplaBuilder = require('ppla-builder');
 ```
 
 ## Documentation
