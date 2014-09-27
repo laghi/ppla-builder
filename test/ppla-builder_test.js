@@ -24,7 +24,6 @@ var PplaBuilder = require('../lib/ppla-builder.js');
 
 exports.testSingleLineBuild = {
     setUp: function(done) {
-        // setup here
         this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000DE\u000D', 'ascii')
         done();
     },
@@ -45,16 +44,34 @@ exports.testSingleLineBuild = {
     }
 }
 
-//exports.testMultiLineBuild = {
-//    setUp: function(done) {
-//        // setup here
-//        done();
-//    },
-//    'no args': function(test) {
-//        test.expect(1);
-//        // tests here
-//        test.equal(ppla_builder.awesome(), 'awesome', 'should be awesome.');
-//        test.done();
-//    },
-//}
+exports.testMultiLineBuild = {
+    setUp: function(done) {
+        this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000D2B220500200010098123456721\u000DE\u000D', 'ascii')
+        done();
+    },
+    'no args': function(test) {
+        test.expect(1);
+
+        PplaBuilder.rotation(PplaBuilder.DIRECTIONS.LANDSCAPE)
+            .fontType(PplaBuilder.FONT_TYPE[':'].value)
+            .fontSubType(PplaBuilder.COURIER_SUBTYPES.ECMA94)
+            .hScale(5)
+            .vScale(3)
+            .x(10)
+            .y(150)
+            .label('Etiqueta de teste')
+            .newLine()
+            .rotation(PplaBuilder.DIRECTIONS.REVERSE_LANDSCAPE)
+            .barcodeType('B')
+            .barcodeHeight('050')
+            .hScale(2)
+            .vScale(2)
+            .x(100)
+            .y(200)
+            .barcode('98123456721')
+
+        test.deepEqual(PplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
+        test.done();
+    }
+}
 
