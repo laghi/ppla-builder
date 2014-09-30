@@ -31,7 +31,8 @@ _(Coming soon)_
                       .vScale(3)
                       .x(100)
                       .y(150)
-                      .label('This is a test label');```
+                      .label('This is a test label');
+```
 
 
 ## Contributing
