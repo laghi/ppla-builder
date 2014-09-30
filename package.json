@@ -22,7 +22,7 @@
   ],
   "main": "lib/ppla-builder",
   "engines": {
-    "node": ">= 0.8.0"
+    "node": ">= 0.10.0"
   },
   "scripts": {
     "test": "grunt nodeunit"
@@ -35,6 +35,6 @@
   },
   "keywords": ["ppla", "argox printer", "argox os", "argox", "printer programming language A"],
   "dependencies": {
-    "lodash": "~2.4.1"
+    "lodash": "^2.4.1"
   }
 }
