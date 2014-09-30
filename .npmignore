@@ -2,3 +2,5 @@ test
 .jshintrc
 .travis.yml
 Gruntfile.js
+.npmignore
+.idea
