@@ -33,7 +33,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt": "~0.4.5"
   },
-  "keywords": [],
+  "keywords": ["ppla", "argox printer", "argox os", "argox", "printer programming language A"],
   "dependencies": {
     "lodash": "^2.4.1"
   }
