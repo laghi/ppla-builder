@@ -24,7 +24,7 @@ var PplaBuilder = require('../lib/ppla-builder.js');
 
 exports.testSingleLineBuild = {
     setUp: function(done) {
-        this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000DE\u000D', 'ascii')
+        this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000DE\u000D', 'ascii');
         done();
     },
     'no args': function(test) {
@@ -37,16 +37,16 @@ exports.testSingleLineBuild = {
                    .vScale(3)
                    .x(10)
                    .y(150)
-                   .label('Etiqueta de teste')
+                   .label('Etiqueta de teste');
 
         test.deepEqual(PplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
     }
-}
+};
 
 exports.testMultiLineBuild = {
     setUp: function(done) {
-        this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000D2B220500200010098123456721\u000DE\u000D', 'ascii')
+        this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000D2B220500200010098123456721\u000DE\u000D', 'ascii');
         done();
     },
     'no args': function(test) {
@@ -68,10 +68,10 @@ exports.testMultiLineBuild = {
             .vScale(2)
             .x(100)
             .y(200)
-            .barcode('98123456721')
+            .barcode('98123456721');
 
         test.deepEqual(PplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
     }
-}
+};
 
