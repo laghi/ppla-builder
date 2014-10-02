@@ -39,11 +39,13 @@ _(Coming soon)_
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_0.1.2_
+_0.1.3_
 Added method for setting the label configurations.
 Added alias method for setting the pixel size of the label.
-_0.1.1_
+_0.1.2_
 Fixed some npm configurations
+_0.1.1_
+Added npm info in the packages.json
 _0.1.0_
 Initial features. Basic label and barcode formatting
 
