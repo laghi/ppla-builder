@@ -22,62 +22,29 @@ var pplaBuilder = require('../lib/ppla-builder.js');
     test.ifError(value)
 */
 
-exports.testSingleLineBuild = {
+module.exports = {
     setUp: function(done) {
+        pplaBuilder.resetLabelConfig();
+        done();
+    },
+    testSingleLineBuild: function(test) {
         this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000DE\u000D', 'ascii');
-        pplaBuilder.resetLabelConfig();
-        done();
-    },
-    'no args': function(test) {
         test.expect(1);
-
         pplaBuilder.rotation(pplaBuilder.DIRECTIONS.LANDSCAPE)
-                   .fontType(pplaBuilder.FONT_TYPE[':'].value)
-                   .fontSubType(pplaBuilder.COURIER_SUBTYPES.ECMA94)
-                   .hScale(5)
-                   .vScale(3)
-                   .x(10)
-                   .y(150)
-                   .label('Etiqueta de teste');
+            .fontType(pplaBuilder.FONT_TYPE[':'].value)
+            .fontSubType(pplaBuilder.COURIER_SUBTYPES.ECMA94)
+            .hScale(5)
+            .vScale(3)
+            .x(10)
+            .y(150)
+            .label('Etiqueta de teste');
 
         test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
-    }
-};
-
-exports.testSingleLineBuildWithPixelSizeConfig = {
-    setUp: function(done) {
-        this.expectedFinalLabel = new Buffer('\u0002L\u000DD11\u000D4:5300101500010Etiqueta de teste\u000DE\u000D', 'ascii');
-        pplaBuilder.resetLabelConfig();
-        done();
     },
-    'no args': function(test) {
-        test.expect(1);
-
-        pplaBuilder.setPixelSize(11)
-                   .rotation(pplaBuilder.DIRECTIONS.LANDSCAPE)
-                   .fontType(pplaBuilder.FONT_TYPE[':'].value)
-                   .fontSubType(pplaBuilder.COURIER_SUBTYPES.ECMA94)
-                   .hScale(5)
-                   .vScale(3)
-                   .x(10)
-                   .y(150)
-                   .label('Etiqueta de teste');
-
-        test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
-        test.done();
-    }
-};
-
-exports.testMultiLineBuild = {
-    setUp: function(done) {
+    testMultiLineBuild: function(test) {
         this.expectedFinalLabel = new Buffer('\u0002L\u000D4:5300101500010Etiqueta de teste\u000D2B220500200010098123456721\u000DE\u000D', 'ascii');
-        pplaBuilder.resetLabelConfig();
-        done();
-    },
-    'no args': function(test) {
         test.expect(1);
-
         pplaBuilder.rotation(pplaBuilder.DIRECTIONS.LANDSCAPE)
             .fontType(pplaBuilder.FONT_TYPE[':'].value)
             .fontSubType(pplaBuilder.COURIER_SUBTYPES.ECMA94)
@@ -95,9 +62,25 @@ exports.testMultiLineBuild = {
             .x(100)
             .y(200)
             .barcode('98123456721');
-
+        test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
+        test.done();
+    },
+    testSingleLineBuildWithPixelSizeConfig: function(test) {
+        this.expectedFinalLabel = new Buffer('\u0002L\u000DD11\u000D111100000500050Test label\u000DE\u000D', 'ascii');
+        test.expect(1);
+        pplaBuilder.setPixelSize(11).label('Test label');
+        test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
+        test.done();
+    },
+    testSingleLineBuildWithMeasureInMeters: function(test){
+        this.expectedFinalLabel = new Buffer('\u0002L\u000Dm\u000D111100000500050label\u000DE\u000D', 'ascii');
+        test.expect(1);
+        pplaBuilder.useMeasureInMeter().label('label');
         test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
     }
 };
+
+
+
 

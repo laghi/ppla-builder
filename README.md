@@ -39,9 +39,11 @@ _(Coming soon)_
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
+_0.1.4_
+Added alias for setting the measures in meter or inchs.
 _0.1.3_
 Added method for setting the label configurations.
-Added alias method for setting the pixel size of the label.
+Added alias for setting the pixel size of the label.
 _0.1.2_
 Fixed some npm configurations
 _0.1.1_
