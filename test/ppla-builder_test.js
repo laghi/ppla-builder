@@ -78,6 +78,21 @@ module.exports = {
         pplaBuilder.useMeasureInMeter().label('label');
         test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
+    },
+    testAssignDefaultValues: function(test){
+        this.expectedDefaults = {
+                "rotation": "1",
+                "fontType": "1",
+                "h": "0",
+                "v": "0",
+                "fontSubType": "000",
+                "y": "0050",
+                "x": "0050"
+        };
+        test.expect(1);
+        pplaBuilder.overwriteDefaults({"h": "0", "v": "0", "invalidEntry": "10"});
+        test.deepEqual(pplaBuilder.defaults, this.expectedDefaults, 'should be ' + this.expectedDefaults);
+        test.done();
     }
 };
 
