@@ -16,8 +16,8 @@
   },
   "licenses": [
     {
-      "type": "GPL-3.0",
-      "url": "https://github.com/laghi/ppla-builder/blob/master/LICENSE-GPL-3.0"
+      "type": "Apache-2.0",
+      "url": "https://github.com/laghi/ppla-builder/blob/master/LICENSE-Apache-2.0"
     }
   ],
   "main": "lib/ppla-builder",

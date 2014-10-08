@@ -39,23 +39,26 @@ _(Coming soon)_
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_0.1.4_
-Added alias for setting the measures in meter or inchs.
-_0.1.3_
-Added method for setting the label configurations.
-Added alias for setting the pixel size of the label.
-_0.1.2_
-Fixed some npm configurations
-_0.1.1_
-Added npm info in the packages.json
-_0.1.0_
-Initial features. Basic label and barcode formatting
-
+_0.1.5_ <br />
+Added alias for setting margin left.<br />
+Added function to overwrite the defaults.<br />
+Changed to Apache-2.0 License.<br />
+_0.1.4_ <br />
+Added alias for setting the measures in meter or inchs.<br />
+_0.1.3_<br />
+Added method for setting the label configurations.<br />
+Added alias for setting the pixel size of the label.<br />
+_0.1.2_<br />
+Fixed some npm configurations<br />
+_0.1.1_<br />
+Added npm info in the packages.json<br />
+_0.1.0_<br />
+Initial features. Basic label and barcode formatting<br />
 
 
 ## License
 Copyright (c) 2014 Murilo Laghi  
-Licensed under the GPL-3.0 license.
+Licensed under the Apache-2.0 license.
 
 
 
