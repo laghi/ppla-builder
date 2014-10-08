@@ -1,7 +1,7 @@
 {
   "name": "ppla-builder",
   "description": "An easy way to build labels in ppla (printer programming language A)",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "homepage": "https://github.com/laghi/ppla-builder",
   "author": {
     "name": "Murilo Laghi",
