@@ -101,6 +101,122 @@ module.exports = {
         pplaBuilder.setMarginLeft(40).label('label');
         test.deepEqual(pplaBuilder.build(), this.expectedFinalLabel, 'should be ' + this.expectedFinalLabel);
         test.done();
+    },
+    testPrint: function(test){
+        var fonttype = pplaBuilder.FONT_TYPE["9"];
+        var LabelBuilder = {
+            buildAndPrintLabel: function(sabor){
+                pplaBuilder.resetLabelConfig().useMeasureInMeter().setPixelSize(11);
+                this.buildTitle(pplaBuilder);
+                this.buildSabor(pplaBuilder, sabor);
+                this.buildDataFabricacao(pplaBuilder, "20/10/2014");
+                this.buildDataValidade(pplaBuilder, "20/04/2015");
+                this.buildLote(pplaBuilder, "20/04/2015");
+                this.buildQRCode(pplaBuilder);
+                this.buildSaborBarcode(pplaBuilder, "7956321856148");
+                this.buildCaixaBarcode(pplaBuilder, "0000000000001");
+                return pplaBuilder.build();
+
+            },
+            buildTitle: function (pplaBuilder) {
+                return pplaBuilder
+                    .hScale(2)
+                    .vScale(2)
+                    .x(20)
+                    .y(590)
+                    .label('Paletas') // TODO externalizar para MessageResources
+                    .newLine();
+            },
+            buildSabor: function(pplaBuilder, sabor){
+                return pplaBuilder
+                    .fontType(fonttype.value, fonttype.subTypes[3])
+                    .hScale(1)
+                    .vScale(1)
+                    .x(20)
+                    .y(190)
+                    .label(sabor)
+                    .newLine();
+            },
+            buildDataFabricacao: function(pplaBuilder, dataFabricacao){
+                return pplaBuilder
+                    .fontType(fonttype.value, fonttype.subTypes[2])
+                    .hScale(1)
+                    .vScale(1)
+                    .x(20)
+                    .y(170)
+                    .label("Fabricacao: " + dataFabricacao) // TODO externalizar para MessageResources
+                    .newLine();
+            },
+            buildDataValidade: function(pplaBuilder, dataValidade){
+                return pplaBuilder
+                    .fontType(fonttype.value, fonttype.subTypes[2])
+                    .hScale(1)
+                    .vScale(1)
+                    .x(20)
+                    .y(150)
+                    .label("Validade: " + dataValidade) // TODO externalizar para MessageResources
+                    .newLine();
+            },
+            buildLote: function(pplaBuilder, cdLote){
+                return pplaBuilder
+                    .fontType(fonttype.value, fonttype.subTypes[2])
+                    .hScale(1)
+                    .vScale(1)
+                    .x(20)
+                    .y(130)
+                    .label("Lote: " + cdLote) // TODO externalizar para MessageResources
+                    .newLine();
+            },
+            buildQRCode: function(pplaBuilder){
+                return pplaBuilder
+                    .barcodeType('W1d')
+                    .x(20)
+                    .y(20)
+                    .narrowBar(5)
+                    .wideBar(5)
+                    .barcode(" Bundinha ")
+                    .newLine();
+            },
+            buildSaborBarcode: function(pplaBuilder, saborBarcode){
+                return pplaBuilder
+                    .barcodeType('F')
+                    .x(100)
+                    .y(20)
+                    .barcode(saborBarcode)
+                    .newLine();
+            },
+            buildCaixaBarcode: function(pplaBuilder, loteBarcode){
+                return pplaBuilder
+                    .barcodeType('F')
+                    .x(150)
+                    .y(20)
+                    .barcode(loteBarcode)
+                    .newLine();
+            }
+        };
+        var fs = require('fs');
+        var exec = require('child_process').exec;
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("Sabor Morango Recheado com Leite Condensado");
+        var labelUuid = "12345678";
+        var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
+        console.log(labelBuffer);
+        stream.once('open', function() {
+            stream.write(labelBuffer);
+            stream.end(sendToPrinter);
+        });
+        var sendToPrinter = function(){
+            exec('lp -d Argox -o raw /tmp/' + labelUuid + '.ppla',
+                function (error, stdout, stderr) {
+                    console.log('stdout: ' + stdout);
+                    console.log('stderr: ' + stderr);
+                    if (error !== null) {
+                        console.log('exec error: ' + error);
+                    }
+                });
+            console.log('budinha');
+        };
+        test.done();
+
     }
 };
 
