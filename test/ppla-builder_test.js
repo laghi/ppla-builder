@@ -152,7 +152,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(330)
+                    .y(340)
                     .label("Fabricacao: " + dataFabricacao)
                     .newLine();
             },
@@ -169,10 +169,10 @@ module.exports = {
             buildTitle: function (pplaBuilder) {
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
-                    .hScale(2)
-                    .vScale(2)
+                    .hScale(3)
+                    .vScale(3)
                     .x(20)
-                    .y(500)
+                    .y(530)
                     .label("Abacaxi")
                     .newLine();
             },
