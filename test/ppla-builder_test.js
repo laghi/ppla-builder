@@ -173,7 +173,7 @@ module.exports = {
                     .vScale(3)
                     .x(20)
                     .y(530)
-                    .label("Abacaxi")
+                    .label("C. Cheese / Goiabada")
                     .newLine();
             },
             buildAndPrintLabel: function(sabor){
@@ -191,7 +191,7 @@ module.exports = {
         };
         var fs = require('fs');
         var exec = require('child_process').exec;
-        var labelBuffer = LabelBuilder.buildAndPrintLabel("Picole tipo mexicano sabor abacaxi 18 unidades");
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("Paleta mexicana - 18 unidades");
         var labelUuid = "12345678";
         var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
         console.log(labelBuffer);
