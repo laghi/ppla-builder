@@ -109,7 +109,7 @@ module.exports = {
                 return pplaBuilder
                     .barcodeType('W1d')
                     .x(20)
-                    .y(20)
+                    .y(30)
                     .narrowBar(5)
                     .wideBar(5)
                     .barcode("www.lovita.com.br")
@@ -122,7 +122,7 @@ module.exports = {
                     .wideBar(0)
                     .barcodeHeight(20)
                     .x(210)
-                    .y(20)
+                    .y(30)
                     .barcode(loteBarcode)
                     .newLine();
             },
@@ -132,7 +132,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(270)
+                    .y(210)
                     .label("Lote: " + cdLote)
                     .newLine();
             },
@@ -141,8 +141,8 @@ module.exports = {
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
                     .hScale(2)
                     .vScale(2)
-                    .x(300)
-                    .y(310)
+                    .x(20)
+                    .y(270)
                     .label("Validade: " + dataValidade)
                     .newLine();
             },
@@ -152,7 +152,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(310)
+                    .y(330)
                     .label("Fabricacao: " + dataFabricacao)
                     .newLine();
             },
@@ -191,7 +191,7 @@ module.exports = {
         };
         var fs = require('fs');
         var exec = require('child_process').exec;
-        var labelBuffer = LabelBuilder.buildAndPrintLabel("Picolé tipo mexicano sabor abacaxi 18 unidades");
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("Picole tipo mexicano sabor abacaxi 18 unidades");
         var labelUuid = "12345678";
         var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
         console.log(labelBuffer);
