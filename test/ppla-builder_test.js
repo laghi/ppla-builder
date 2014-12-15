@@ -162,7 +162,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(400)
+                    .y(420)
                     .label(sabor)
                     .newLine();
             },
