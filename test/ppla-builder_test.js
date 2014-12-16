@@ -178,12 +178,14 @@ module.exports = {
                         .label(titulo)
                         .newLine();
                 }
-                var linebreak = titulo.indexOf(' ', 20);
-                if(linebreak === -1){
-                    linebreak = 24;
+                var line1End = titulo.indexOf(' ', 20);
+                var line2Begin = line1End + 1;
+                if(line1End === -1){
+                    line1End = 24;
+                    line2Begin = line1End;
                 }
-                var tituloLine1 = titulo.substr(0, linebreak);
-                var tituloLine2 = titulo.substr(linebreak, tituloSize);
+                var tituloLine1 = titulo.substr(0, line1End);
+                var tituloLine2 = titulo.substr(line2Begin, tituloSize);
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
                     .hScale(2)
