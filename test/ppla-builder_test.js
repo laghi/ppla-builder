@@ -174,7 +174,7 @@ module.exports = {
                         .hScale(3)
                         .vScale(3)
                         .x(20)
-                        .y(530)
+                        .y(500)
                         .label(titulo)
                         .newLine();
                 }
@@ -183,13 +183,13 @@ module.exports = {
                     linebreak = 15;
                 }
                 var tituloLine1 = titulo.substr(0, linebreak);
-                var tituloLine2 = titulo.substr(linebreak + 1, tituloSize);
+                var tituloLine2 = titulo.substr(linebreak, tituloSize);
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
                     .hScale(3)
                     .vScale(3)
                     .x(20)
-                    .y(510)
+                    .y(500)
                     .label(tituloLine2)
                     .newLine()
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
