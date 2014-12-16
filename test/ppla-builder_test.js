@@ -131,7 +131,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(210)
+                    .y(200)
                     .label("Lote: " + cdLote)
                     .newLine();
             },
@@ -141,7 +141,7 @@ module.exports = {
                     .hScale(2)
                     .vScale(2)
                     .x(20)
-                    .y(270)
+                    .y(260)
                     .label("Validade: " + dataValidade)
                     .newLine();
             },
@@ -151,7 +151,7 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(340)
+                    .y(320)
                     .label("Fabricacao: " + dataFabricacao)
                     .newLine();
             },
@@ -161,42 +161,42 @@ module.exports = {
                     .hScale(1)
                     .vScale(2)
                     .x(20)
-                    .y(420)
+                    .y(380)
                     .label("Paleta mexicana - 18 unidades")
                     .newLine();
             },
             buildTitle: function (pplaBuilder, titulo) {
 
                 var tituloSize = _.size(titulo);
-                if(tituloSize <= 15) {
+                if(tituloSize <= 24) {
                     return pplaBuilder
                         .fontType(pplaBuilder.FONT_TYPE['2'].value)
-                        .hScale(3)
-                        .vScale(3)
+                        .hScale(2)
+                        .vScale(2)
                         .x(20)
-                        .y(500)
+                        .y(440)
                         .label(titulo)
                         .newLine();
                 }
-                var linebreak = titulo.indexOf(' ', 15);
+                var linebreak = titulo.indexOf(' ', 20);
                 if(linebreak === -1){
-                    linebreak = 15;
+                    linebreak = 24;
                 }
                 var tituloLine1 = titulo.substr(0, linebreak);
                 var tituloLine2 = titulo.substr(linebreak, tituloSize);
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
-                    .hScale(3)
-                    .vScale(3)
+                    .hScale(2)
+                    .vScale(2)
                     .x(20)
-                    .y(500)
+                    .y(440)
                     .label(tituloLine2)
                     .newLine()
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
-                    .hScale(3)
-                    .vScale(3)
+                    .hScale(2)
+                    .vScale(2)
                     .x(20)
-                    .y(570)
+                    .y(500)
                     .label(tituloLine1)
                     .newLine();
 
@@ -217,7 +217,7 @@ module.exports = {
         var fs = require('fs');
         var _ = require('lodash');
         var exec = require('child_process').exec;
-        var labelBuffer = LabelBuilder.buildAndPrintLabel("C. Cheese / Goiabada");
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("Cream Cheese / Goiabada");
         var labelUuid = "12345678";
         var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
         console.log(labelBuffer);
