@@ -156,42 +156,68 @@ module.exports = {
                     .label("Fabricacao: " + dataFabricacao)
                     .newLine();
             },
-            buildProduto: function(pplaBuilder, sabor){
+            buildProduto: function(pplaBuilder){
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
                     .hScale(1)
                     .vScale(2)
                     .x(20)
                     .y(420)
-                    .label(sabor)
+                    .label("Paleta mexicana - 18 unidades")
                     .newLine();
             },
-            buildTitle: function (pplaBuilder) {
+            buildTitle: function (pplaBuilder, titulo) {
+
+                var tituloSize = _.size(titulo);
+                if(tituloSize <= 15) {
+                    return pplaBuilder
+                        .fontType(pplaBuilder.FONT_TYPE['2'].value)
+                        .hScale(3)
+                        .vScale(3)
+                        .x(20)
+                        .y(530)
+                        .label(titulo)
+                        .newLine();
+                }
+                var linebreak = titulo.indexOf(' ', 15);
+                if(linebreak === -1){
+                    linebreak = 15;
+                }
+                var tituloLine1 = titulo.substr(0, linebreak);
+                var tituloLine2 = titulo.substr(linebreak + 1, tituloSize);
                 return pplaBuilder
                     .fontType(pplaBuilder.FONT_TYPE['2'].value)
                     .hScale(3)
                     .vScale(3)
                     .x(20)
-                    .y(530)
-                    .label("C. Cheese / Goiabada")
+                    .y(510)
+                    .label(tituloLine2)
+                    .newLine()
+                    .fontType(pplaBuilder.FONT_TYPE['2'].value)
+                    .hScale(3)
+                    .vScale(3)
+                    .x(20)
+                    .y(570)
+                    .label(tituloLine1)
                     .newLine();
+
             },
-            buildAndPrintLabel: function(sabor){
+            buildAndPrintLabel: function(titulo){
                 pplaBuilder.resetLabelConfig().useMeasureInMeter().setPixelSize(11).setMarginLeft(40);
                 this.buildQRCode(pplaBuilder);
                 this.buildCaixaBarcode(pplaBuilder, "000450000010");
                 this.buildLote(pplaBuilder, "10");
                 this.buildDataFabricacao(pplaBuilder, "20/10/2014");
                 this.buildDataValidade(pplaBuilder, "20/04/2015");
-                this.buildProduto(pplaBuilder, sabor);
-                this.buildTitle(pplaBuilder);
+                this.buildProduto(pplaBuilder);
+                this.buildTitle(pplaBuilder, titulo);
                 return pplaBuilder.build();
 
             }
         };
         var fs = require('fs');
         var exec = require('child_process').exec;
-        var labelBuffer = LabelBuilder.buildAndPrintLabel("Paleta mexicana - 18 unidades");
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("C. Cheese / Goiabada");
         var labelUuid = "12345678";
         var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
         console.log(labelBuffer);
