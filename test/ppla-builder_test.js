@@ -217,7 +217,7 @@ module.exports = {
         var fs = require('fs');
         var _ = require('lodash');
         var exec = require('child_process').exec;
-        var labelBuffer = LabelBuilder.buildAndPrintLabel("Cream Cheese / Goiabada");
+        var labelBuffer = LabelBuilder.buildAndPrintLabel("Cream Cheese com Goiabada Cremosa");
         var labelUuid = "12345678";
         var stream = fs.createWriteStream("/tmp/" + labelUuid + ".ppla");
         console.log(labelBuffer);
