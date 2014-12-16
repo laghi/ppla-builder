@@ -103,7 +103,6 @@ module.exports = {
         test.done();
     },
     testPrint: function(test){
-        var fonttype = pplaBuilder.FONT_TYPE["9"];
         var LabelBuilder = {
             buildQRCode: function(pplaBuilder){
                 return pplaBuilder
@@ -216,6 +215,7 @@ module.exports = {
             }
         };
         var fs = require('fs');
+        var _ = require('lodash');
         var exec = require('child_process').exec;
         var labelBuffer = LabelBuilder.buildAndPrintLabel("C. Cheese / Goiabada");
         var labelUuid = "12345678";
