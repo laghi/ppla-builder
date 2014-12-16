@@ -111,7 +111,7 @@ module.exports = {
                     .y(30)
                     .narrowBar(5)
                     .wideBar(5)
-                    .barcode("www.lovita.com.br")
+                    .barcode("http://facebook.com/lovitabr")
                     .newLine();
             },
             buildCaixaBarcode: function(pplaBuilder, loteBarcode){
